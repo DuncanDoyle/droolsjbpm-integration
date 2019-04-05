@@ -45,6 +45,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.drools.core.impl.InternalKieContainer;
+import org.jbpm.document.Documents;
 import org.jbpm.document.service.impl.DocumentImpl;
 import org.jbpm.executor.ExecutorServiceFactory;
 import org.jbpm.executor.impl.ExecutorImpl;
@@ -440,6 +441,7 @@ public class JbpmKieServerExtension implements KieServerExtension {
             Set<Class<?>> customClasses = new HashSet<Class<?>>(deployedUnit.getDeployedClasses());
             // add custom classes that come from extension itself
             customClasses.add(DocumentImpl.class);
+            customClasses.add(Documents.class);
             kieContainerInstance.addExtraClasses(customClasses);
 
             // add any query result mappers from kjar
